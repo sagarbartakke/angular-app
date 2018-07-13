@@ -1,0 +1,18 @@
+<form class="form-horizontal container border border-secondary col-md-4 p-3" [formGroup]="userForm" (ngSubmit)="login(userForm.value)" style="margin-top: 10px">
+  <div class="form-group">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Username" formControlName="username" required>
+      <mat-error *ngIf="!userForm.controls['username'].valid && userForm.controls['username'].touched">Username is required.</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Password" type='password' formControlName="password" name="password" required>
+      <mat-error *ngIf="!userForm.controls['password'].valid && userForm.controls['password'].touched">Password is required.</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <button mat-flat-button [disabled]="!userForm.valid">Login</button>
+    &nbsp;<a routerLink="register">Register</a>
+  </div>
+</form>

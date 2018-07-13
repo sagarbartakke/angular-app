@@ -1,0 +1,47 @@
+<p class="alert alert-danger m-2" role="alert" *ngIf="errorMessage">{{errorMessage}}</p>
+
+<div class="container  m-2" *ngIf="users$">
+  <!-- <div class="alert alert-secondary m-2" role="alert">
+    <input type="text" placeholder="Search Users" class="form-control" [(ngModel)]="q" name="q" aria-label="small">
+  </div> -->
+  <div class="card m-2 rounded" *ngFor="let user of users$ | userSearch:q">
+    <div class="card-body">
+      <h5 class="card-title">
+        <i class="far fa-user"></i> {{user.name}}
+        <small class="float-right text-secondary">@{{user.username}}</small>
+      </h5>
+      <hr>
+      <p class="card-text">
+        <a href="mailto://{{user.email}}">{{user.email}}</a>
+      </p>
+      <p class="card-text">{{user.address.street}}, {{user.address.suite}}, {{user.address.city}},</p>
+      <p class="">Zip: {{user.address.zipcode}}</p>
+      <p class="card-text">
+        <a href="http://www.{{user.website}}" target="blank">www.{{user.website}}</a>
+      </p>
+      <a routerLink="/posts/{{user.id}}" class="btn btn-primary">Posts</a>
+      &nbsp; <button mat-button mat-flat-button (click)="openAddPostDialog(user.id)">Add Post</button>
+    </div>
+  </div>
+</div>
+
+<div class="container  m-2" *ngIf="user$">
+  <div class="card m-2 rounded">
+    <div class="card-body">
+      <h5 class="card-title">
+        <i class="far fa-user"></i> {{user$.name}}
+        <small class="float-right text-secondary">@{{user$.username}}</small>
+      </h5>
+      <hr>
+      <p class="card-text">
+        <a href="mailto://{{user$.email}}">{{user$.email}}</a>
+      </p>
+      <p class="card-text">{{user$.address.street}}, {{user$.address.suite}}, {{user$.address.city}},</p>
+      <p class="">Zip: {{user$.address.zipcode}}</p>
+      <p class="card-text">
+        <a href="http://www.{{user$.website}}" target="blank">www.{{user$.website}}</a>
+      </p>
+      <a routerLink="/posts/{{user$.id}}" class="btn btn-primary">Posts</a>
+    </div>
+  </div>
+</div>
